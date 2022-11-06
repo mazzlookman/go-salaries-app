@@ -1,0 +1,224 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Salaries App RESTFul API",
+    "description": "API Spec for Salaries App",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http//localhost:8080/api"
+    }
+  ],
+  "paths": {
+    "/salaries": {
+      "get": {
+        "security": [{
+          "SalariesAuth": []
+        }],
+        "tags": [
+          "Salaries App API"
+        ],
+        "summary": "List all salaries",
+        "description": "List all salaries",
+        "responses": {
+          "200": {
+            "description": "Success get all salaries",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Salary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [{
+          "SalariesAuth": []
+        }],
+        "tags": [
+          "Salaries App API"
+        ],
+        "summary": "Create New Salary",
+        "description": "Create New Salary",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateSalary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success Create New Salary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Salary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/salaries/{salaryId}": {
+      "get": {
+        "security": [{
+          "SalariesAuth": []
+        }],
+        "tags": [
+          "Salaries App API"
+        ],
+        "description": "Get Salary by Id",
+        "summary": "Get Salary by Id",
+        "parameters": [
+          {
+            "name": "salaryId",
+            "in": "path",
+            "description": "salaryId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success Get Salary by Id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Salary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [{
+          "SalariesAuth": []
+        }],
+        "tags": ["Salaries App API"],
+        "description": "Update Salary by Id",
+        "summary": "Update Salary by Id",
+        "parameters": [{
+          "name": "salaryId",
+          "in": "path",
+          "description": "Salary Id"
+        }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateSalary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success Update Salary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Salary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [{
+          "SalariesAuth": []
+        }],
+        "tags": ["Salaries App API"],
+        "description": "Delete Salary by Id",
+        "summary": "Delete Salary by Id",
+        "parameters": [{
+          "name": "salaryId",
+          "in": "path",
+          "description": "Salary Id"
+        }],
+        "responses": {
+          "200": {
+            "description": "Success Delete Salary by Id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "SalariesAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key",
+        "description": "Authentication for Salaries App"
+      }
+    },
+    "schemas": {
+      "CreateOrUpdateSalary": {
+        "type": "object",
+        "properties": {
+          "role" : {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "salary" : {
+            "type": "number"
+          }
+        }
+      },
+      "Salary": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "company": {
+                  "type": "string"
+                },
+                "salary": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
