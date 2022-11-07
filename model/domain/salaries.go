@@ -5,4 +5,5 @@ type Salaries struct {
 	Role    string
 	Company string
 	Expr    int
+	Salary  int
 }
