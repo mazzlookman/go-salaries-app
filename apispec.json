@@ -183,6 +183,9 @@
           "company": {
             "type": "string"
           },
+          "expr": {
+            "type": "number"
+          },
           "salary" : {
             "type": "number"
           }
@@ -210,6 +213,9 @@
                 },
                 "company": {
                   "type": "string"
+                },
+                "expr": {
+                  "type": "number"
                 },
                 "salary": {
                   "type": "number"
