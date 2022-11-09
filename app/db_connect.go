@@ -2,6 +2,7 @@ package app
 
 import (
 	"database/sql"
+	_ "github.com/go-sql-driver/mysql"
 	"go-salaries-app/helper"
 	"time"
 )
@@ -9,7 +10,7 @@ import (
 func NewDB() *sql.DB {
 	db, err := sql.Open("mysql", "root:root@tcp(localhost:3360)/salaries_app")
 	helper.PanicIfError(err)
-	
+
 	db.SetMaxIdleConns(5)
 	db.SetMaxOpenConns(20)
 	db.SetConnMaxLifetime(60 * time.Minute)
