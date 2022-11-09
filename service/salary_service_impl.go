@@ -16,6 +16,13 @@ type SalaryServiceImpl struct {
 	*validator.Validate
 }
 
+func NewSalaryService(salaryRepository repository.SalaryRepository, DB *sql.DB, validate *validator.Validate) SalaryService {
+	return &SalaryServiceImpl{
+		SalaryRepository: salaryRepository,
+		DB:               DB,
+		Validate:         validate}
+}
+
 func (service *SalaryServiceImpl) Create(ctx context.Context, request web.SalaryCreateRequest) web.SalaryResponse {
 	errValidate := service.Validate.Struct(request)
 	helper.PanicIfError(errValidate)

@@ -13,7 +13,11 @@ type SalaryControllerImpl struct {
 	service.SalaryService
 }
 
-func (controller *SalaryControllerImpl) Create(request *http.Request, writer http.ResponseWriter, params httprouter.Params) {
+func NewSalaryController(salaryService service.SalaryService) SalaryController {
+	return &SalaryControllerImpl{SalaryService: salaryService}
+}
+
+func (controller *SalaryControllerImpl) Create(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
 	salaryCreateRequest := web.SalaryCreateRequest{}
 	helper.ReadFromRequestBody(request, &salaryCreateRequest)
 
@@ -29,7 +33,7 @@ func (controller *SalaryControllerImpl) Create(request *http.Request, writer htt
 
 }
 
-func (controller *SalaryControllerImpl) Update(request *http.Request, writer http.ResponseWriter, params httprouter.Params) {
+func (controller *SalaryControllerImpl) Update(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
 	salaryUpdateRequest := web.SalaryUpdateRequest{}
 	helper.ReadFromRequestBody(request, &salaryUpdateRequest)
 
@@ -49,7 +53,7 @@ func (controller *SalaryControllerImpl) Update(request *http.Request, writer htt
 	helper.WriteToResponseBody(writer, &webResp)
 }
 
-func (controller *SalaryControllerImpl) Delete(request *http.Request, writer http.ResponseWriter, params httprouter.Params) {
+func (controller *SalaryControllerImpl) Delete(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
 	id := params.ByName("categoryId")
 	idInt, _ := strconv.Atoi(id)
 
@@ -64,7 +68,7 @@ func (controller *SalaryControllerImpl) Delete(request *http.Request, writer htt
 	helper.WriteToResponseBody(writer, &webResp)
 }
 
-func (controller *SalaryControllerImpl) FindById(request *http.Request, writer http.ResponseWriter, params httprouter.Params) {
+func (controller *SalaryControllerImpl) FindById(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
 	id := params.ByName("categoryId")
 	idInt, _ := strconv.Atoi(id)
 
@@ -79,7 +83,7 @@ func (controller *SalaryControllerImpl) FindById(request *http.Request, writer h
 	helper.WriteToResponseBody(writer, &webResp)
 }
 
-func (controller *SalaryControllerImpl) FindAll(request *http.Request, writer http.ResponseWriter, params httprouter.Params) {
+func (controller *SalaryControllerImpl) FindAll(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
 	findAll := controller.SalaryService.FindAll(request.Context())
 
 	webResp := web.WebResponse{

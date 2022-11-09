@@ -11,6 +11,10 @@ import (
 type SalaryRepositoryImpl struct {
 }
 
+func NewSalaryRepository() SalaryRepository {
+	return &SalaryRepositoryImpl{}
+}
+
 func (repository *SalaryRepositoryImpl) Save(ctx context.Context, tx *sql.Tx, salary domain.Salaries) domain.Salaries {
 	sql := "insert into salaries (role, company, expr, salary) values (?,?,?,?)"
 	result, err := tx.ExecContext(ctx, sql, salary.Role, salary.Company, salary.Expr, salary.Salary)
