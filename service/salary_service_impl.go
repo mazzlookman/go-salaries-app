@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"database/sql"
+	"github.com/go-playground/validator"
 	"go-salaries-app/helper"
 	"go-salaries-app/model/domain"
 	"go-salaries-app/model/web"
@@ -12,9 +13,13 @@ import (
 type SalaryServiceImpl struct {
 	repository.SalaryRepository
 	*sql.DB
+	*validator.Validate
 }
 
 func (service *SalaryServiceImpl) Create(ctx context.Context, request web.SalaryCreateRequest) web.SalaryResponse {
+	errValidate := service.Validate.Struct(request)
+	helper.PanicIfError(errValidate)
+
 	tx, err := service.DB.Begin()
 	helper.PanicIfError(err)
 	defer helper.CommitOrRollback(tx)
@@ -32,6 +37,9 @@ func (service *SalaryServiceImpl) Create(ctx context.Context, request web.Salary
 }
 
 func (service *SalaryServiceImpl) Update(ctx context.Context, request web.SalaryUpdateRequest) web.SalaryResponse {
+	errValidate := service.Validate.Struct(request)
+	helper.PanicIfError(errValidate)
+
 	tx, err := service.DB.Begin()
 	helper.PanicIfError(err)
 	defer helper.CommitOrRollback(tx)
