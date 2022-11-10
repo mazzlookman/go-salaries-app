@@ -37,7 +37,7 @@ func (controller *SalaryControllerImpl) Update(writer http.ResponseWriter, reque
 	salaryUpdateRequest := web.SalaryUpdateRequest{}
 	helper.ReadFromRequestBody(request, &salaryUpdateRequest)
 
-	id := params.ByName("categoryId")
+	id := params.ByName("salaryId")
 	idInt, _ := strconv.Atoi(id)
 
 	salaryUpdateRequest.Id = idInt
@@ -54,7 +54,7 @@ func (controller *SalaryControllerImpl) Update(writer http.ResponseWriter, reque
 }
 
 func (controller *SalaryControllerImpl) Delete(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
-	id := params.ByName("categoryId")
+	id := params.ByName("salaryId")
 	idInt, _ := strconv.Atoi(id)
 
 	controller.SalaryService.Delete(request.Context(), idInt)
@@ -69,7 +69,7 @@ func (controller *SalaryControllerImpl) Delete(writer http.ResponseWriter, reque
 }
 
 func (controller *SalaryControllerImpl) FindById(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
-	id := params.ByName("categoryId")
+	id := params.ByName("salaryId")
 	idInt, _ := strconv.Atoi(id)
 
 	findById := controller.SalaryService.FindById(request.Context(), idInt)

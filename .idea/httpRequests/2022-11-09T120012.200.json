@@ -1,0 +1,11 @@
+{
+  "code": 200,
+  "status": "OK",
+  "data": {
+    "id": 0,
+    "role": "",
+    "company": "",
+    "expr": 0,
+    "salary": 0
+  }
+}

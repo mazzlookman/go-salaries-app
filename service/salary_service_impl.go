@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"github.com/go-playground/validator"
+	"go-salaries-app/exception"
 	"go-salaries-app/helper"
 	"go-salaries-app/model/domain"
 	"go-salaries-app/model/web"
@@ -52,7 +53,9 @@ func (service *SalaryServiceImpl) Update(ctx context.Context, request web.Salary
 	defer helper.CommitOrRollback(tx)
 
 	findByIdResponse, err := service.SalaryRepository.FindById(ctx, tx, request.Id)
-	helper.PanicIfError(err)
+	if err != nil {
+		panic(exception.NewNotFoundError(err.Error()))
+	}
 
 	findByIdResponse.Role = request.Role
 	findByIdResponse.Company = request.Company
@@ -70,7 +73,9 @@ func (service *SalaryServiceImpl) Delete(ctx context.Context, salaryId int) {
 	defer helper.CommitOrRollback(tx)
 
 	findByIdResponse, err := service.SalaryRepository.FindById(ctx, tx, salaryId)
-	helper.PanicIfError(err)
+	if err != nil {
+		panic(exception.NewNotFoundError(err.Error()))
+	}
 
 	service.SalaryRepository.Delete(ctx, tx, findByIdResponse)
 }
@@ -81,7 +86,9 @@ func (service *SalaryServiceImpl) FindById(ctx context.Context, salaryId int) we
 	defer helper.CommitOrRollback(tx)
 
 	findByIdResponse, err := service.SalaryRepository.FindById(ctx, tx, salaryId)
-	helper.PanicIfError(err)
+	if err != nil {
+		panic(exception.NewNotFoundError(err.Error()))
+	}
 
 	return helper.ToSalaryResponse(findByIdResponse)
 }

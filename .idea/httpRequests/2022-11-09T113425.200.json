@@ -1,0 +1,11 @@
+{
+  "code": 200,
+  "status": "OK",
+  "data": {
+    "id": 2,
+    "role": "Frontend Developer",
+    "company": "Shopee",
+    "expr": 1,
+    "salary": 6000000
+  }
+}

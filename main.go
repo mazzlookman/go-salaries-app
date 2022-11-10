@@ -5,6 +5,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 	"go-salaries-app/app"
 	"go-salaries-app/controller"
+	"go-salaries-app/exception"
 	"go-salaries-app/helper"
 	"go-salaries-app/repository"
 	"go-salaries-app/service"
@@ -24,6 +25,8 @@ func main() {
 	router.POST("/api/salaries", salaryController.Create)
 	router.PUT("/api/salaries/:salaryId", salaryController.Update)
 	router.DELETE("/api/salaries/:salaryId", salaryController.Delete)
+
+	router.PanicHandler = exception.ErrorHandler
 
 	server := http.Server{
 		Addr:    "localhost:8080",

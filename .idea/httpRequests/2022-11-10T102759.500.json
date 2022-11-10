@@ -1,0 +1,7 @@
+{
+  "code": 500,
+  "status": "INTERNAL SERVER ERROR",
+  "data": {
+    "Error": "Salary is not found"
+  }
+}

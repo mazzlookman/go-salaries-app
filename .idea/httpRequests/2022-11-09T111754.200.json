@@ -1,0 +1,13 @@
+{
+  "Code": 200,
+  "Status": "OK",
+  "Data": [
+    {
+      "Id": 1,
+      "Role": "Backend Developer",
+      "Company": "Tokped",
+      "Expr": 3,
+      "Salary": 10000000
+    }
+  ]
+}

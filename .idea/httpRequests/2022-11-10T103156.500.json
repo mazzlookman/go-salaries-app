@@ -1,0 +1,12 @@
+{
+  "code": 500,
+  "status": "INTERNAL SERVER ERROR",
+  "data": {
+    "Error": "Salary is not found"
+  }
+}
+{
+  "code": 404,
+  "status": "NOT FOUND",
+  "data": "Salary is not found"
+}

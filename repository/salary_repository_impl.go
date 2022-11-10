@@ -43,26 +43,28 @@ func (repository *SalaryRepositoryImpl) Delete(ctx context.Context, tx *sql.Tx, 
 
 func (repository *SalaryRepositoryImpl) FindById(ctx context.Context, tx *sql.Tx, salaryId int) (domain.Salaries, error) {
 	sql := "select * from salaries where id = ?"
-	result, err := tx.QueryContext(ctx, sql, salaryId)
+	rows, err := tx.QueryContext(ctx, sql, salaryId)
+	defer rows.Close()
 	helper.PanicIfError(err)
 
 	salary := domain.Salaries{}
-	if result.Next() {
-		err := result.Scan(&salary.Id, &salary.Role, &salary.Company, &salary.Expr, &salary.Salary)
+	if rows.Next() {
+		err := rows.Scan(&salary.Id, &salary.Role, &salary.Company, &salary.Expr, &salary.Salary)
 		helper.PanicIfError(err)
 		return salary, nil
 	} else {
-		return salary, errors.New("Salary not found")
+		return salary, errors.New("Salary is not found")
 	}
 }
 
 func (repository *SalaryRepositoryImpl) FindAll(ctx context.Context, tx *sql.Tx) []domain.Salaries {
 	sql := "select * from salaries"
 	rows, err := tx.QueryContext(ctx, sql)
+	defer rows.Close()
 	helper.PanicIfError(err)
 
 	var salaries []domain.Salaries
-	if rows.Next() {
+	for rows.Next() {
 		salary := domain.Salaries{}
 		err := rows.Scan(&salary.Id, &salary.Role, &salary.Company, &salary.Expr, &salary.Salary)
 		helper.PanicIfError(err)

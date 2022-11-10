@@ -1,0 +1,11 @@
+{
+  "code": 200,
+  "status": "OK",
+  "data": {
+    "id": 1,
+    "role": "Backend Developer",
+    "company": "Tokopedia",
+    "expr": 0,
+    "salary": 5000000
+  }
+}

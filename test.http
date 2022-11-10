@@ -1,0 +1,35 @@
+### Get All
+GET localhost:8080/api/salaries
+Accept: application/json
+
+### Create
+POST localhost:8080/api/salaries
+Content-Type: application/json
+Accept: application/json
+
+{
+  "role": "",
+  "company": "Shopee",
+  "expr": 1,
+  "salary": 6000000
+}
+
+### Find By Id
+GET localhost:8080/api/salaries/10
+Accept: application/json
+
+### Update
+PUT localhost:8080/api/salaries/10
+Content-Type: application/json
+Accept: application/json
+
+{
+  "role": "Backend Developer",
+  "company": "Gojek",
+  "expr": 1,
+  "salary": 8000000
+}
+
+### Delete
+DELETE localhost:8080/api/salaries/2
+Accept: application/json
