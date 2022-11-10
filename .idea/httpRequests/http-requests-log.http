@@ -1,3 +1,94 @@
+GET http://localhost:8080/api/salaries
+Accept: application/json
+x-api-key: rahasia
+
+<> 2022-11-10T105804.200.json
+
+###
+
+GET http://localhost:8080/api/salaries
+x-api-key: rahasia
+Accept: application/json
+
+<> 2022-11-10T105739.200.json
+
+###
+
+GET http://localhost:8080/api/salaries
+x-api-key : rahasia
+Accept: application/json
+
+<> 2022-11-10T105711.400.txt
+
+###
+
+GET http://localhost:8080/api/salaries
+Accept: application/json
+x-api-key : rahasia
+
+<> 2022-11-10T105657.400.txt
+
+###
+
+GET http://localhost:8080/api/salaries
+Accept: application/json
+x-api-key = rahasia:
+
+<> 2022-11-10T105631.400.txt
+
+###
+
+DELETE http://localhost:8080/api/salaries/2
+Accept: application/json
+
+<> 2022-11-10T105534.401.json
+
+###
+
+PUT http://localhost:8080/api/salaries/10
+Content-Type: application/json
+Accept: application/json
+
+{
+  "role": "Backend Developer",
+  "company": "Gojek",
+  "expr": 1,
+  "salary": 8000000
+}
+
+<> 2022-11-10T105530.401.json
+
+###
+
+POST http://localhost:8080/api/salaries
+Content-Type: application/json
+Accept: application/json
+
+{
+  "role": "",
+  "company": "Shopee",
+  "expr": 1,
+  "salary": 6000000
+}
+
+<> 2022-11-10T105523.401.json
+
+###
+
+GET http://localhost:8080/api/salaries
+Accept: application/json
+
+<> 2022-11-10T105519.401.json
+
+###
+
+GET http://localhost:8080/api/salaries/10
+Accept: application/json
+
+<> 2022-11-10T105506.401.json
+
+###
+
 PUT http://localhost:8080/api/salaries/10
 Content-Type: application/json
 Accept: application/json
@@ -429,32 +520,6 @@ GET http://localhost:8080/api/salaries
 Accept: application/json
 
 <> 2022-11-09T112215.200.json
-
-###
-
-GET http://localhost:8080/api/salaries
-Accept: application/json
-
-<> 2022-11-09T112200.200.json
-
-###
-
-GET http://localhost:8080/api/salaries
-Accept: application/json
-
-<> 2022-11-09T111906.200.json
-
-###
-
-GET http://localhost:8080/api/salaries
-Accept: application/json
-
-<> 2022-11-09T111754.200.json
-
-###
-
-GET http://localhost:8080/api/salaries
-Accept: application/json
 
 ###
 

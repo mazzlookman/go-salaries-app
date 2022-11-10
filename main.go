@@ -7,6 +7,7 @@ import (
 	"go-salaries-app/controller"
 	"go-salaries-app/exception"
 	"go-salaries-app/helper"
+	"go-salaries-app/middleware"
 	"go-salaries-app/repository"
 	"go-salaries-app/service"
 	"net/http"
@@ -30,7 +31,7 @@ func main() {
 
 	server := http.Server{
 		Addr:    "localhost:8080",
-		Handler: router,
+		Handler: middleware.NewAuthMiddleware(router),
 	}
 
 	err := server.ListenAndServe()

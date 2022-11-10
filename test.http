@@ -1,6 +1,7 @@
 ### Get All
 GET localhost:8080/api/salaries
 Accept: application/json
+x-api-key: rahasia
 
 ### Create
 POST localhost:8080/api/salaries
