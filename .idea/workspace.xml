@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4da4dcc-a5a5-4600-ac0f-6445f485c96a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5866722d-a99e-4903-a11c-dd3e5b3a485b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5866722d-a99e-4903-a11c-dd3e5b3a485b.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/db_connect.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/db_connect.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,20 +98,44 @@
       <recent name="D:\CodingTraining\Development\GoLang\go-salaries-app\model\domain" />
     </key>
   </component>
-  <component name="RunManager" selected="HTTP Request.test | Get All">
-    <configuration name="test | Create" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" index="2" requestIdentifier="Create" runType="Run single request">
+  <component name="RunManager" selected="Go Test.TestCreateSalarySuccess in go-salaries-app/test">
+    <configuration name="go build go-salaries-app" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="go-salaries-app" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="go-salaries-app" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestCreateSalarySuccess in go-salaries-app/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-salaries-app" />
+      <working_directory value="$PROJECT_DIR$/test" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="go-salaries-app/test" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestCreateSalarySuccess\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestName in go-salaries-app/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-salaries-app" />
+      <working_directory value="$PROJECT_DIR$/test" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="go-salaries-app/test" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestName\E$" />
       <method v="2" />
     </configuration>
     <configuration name="test | Delete" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" index="5" requestIdentifier="Delete" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="test | Find By Id" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" index="3" requestIdentifier="Find By Id" runType="Run single request">
-      <method v="2" />
-    </configuration>
     <configuration name="test | Get All" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" requestIdentifier="Get All" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="test | Update" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" index="4" requestIdentifier="Update" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration default="true" type="SwaggerCodegen">
@@ -129,11 +156,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestCreateSalarySuccess in go-salaries-app/test" />
+        <item itemvalue="Go Build.go build go-salaries-app" />
+        <item itemvalue="Go Test.TestName in go-salaries-app/test" />
         <item itemvalue="HTTP Request.test | Get All" />
         <item itemvalue="HTTP Request.test | Delete" />
-        <item itemvalue="HTTP Request.test | Update" />
-        <item itemvalue="HTTP Request.test | Create" />
-        <item itemvalue="HTTP Request.test | Find By Id" />
       </list>
     </recent_temporary>
   </component>
