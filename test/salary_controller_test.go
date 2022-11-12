@@ -1,18 +1,22 @@
 package test
 
 import (
+	"context"
 	"database/sql"
 	"encoding/json"
 	"github.com/go-playground/validator"
 	"go-salaries-app/app"
 	"go-salaries-app/controller"
+	"go-salaries-app/helper"
 	"go-salaries-app/middleware"
+	"go-salaries-app/model/domain"
 	"go-salaries-app/repository"
 	"go-salaries-app/service"
 	"gopkg.in/go-playground/assert.v1"
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"strconv"
 	"strings"
 	"testing"
 )
@@ -87,7 +91,42 @@ func TestCreateSalaryFailed(t *testing.T) {
 }
 
 func TestUpdateSalarySuccess(t *testing.T) {
+	db := app.NewDBTest()
+	TruncateSalary(db)
+	router := setupRouter(db)
 
+	//create new salary
+	salaryRepository := repository.NewSalaryRepository()
+	tx, err := db.Begin()
+	save := salaryRepository.Save(context.Background(), tx, domain.Salaries{
+		Role:    "Technical Architect",
+		Company: "Blibli",
+		Expr:    10,
+		Salary:  50000000,
+	})
+	helper.PanicIfError(err)
+	tx.Commit()
+
+	//update salary that was created above
+	payload := strings.NewReader(`{"role":"CTO","company":"Bukalapak","expr":15,"salary":100000000}`)
+	request := httptest.NewRequest("PUT", "http://localhost:8080/api/salaries/"+strconv.Itoa(save.Id), payload)
+	request.Header.Add("Content-Type", "application/json")
+	request.Header.Add("x-api-key", "rahasia")
+	writer := httptest.NewRecorder()
+
+	router.ServeHTTP(writer, request)
+
+	response := writer.Result()
+	bytes, _ := io.ReadAll(response.Body)
+	//assert.Equal(t, 200, response.StatusCode)
+
+	var salary map[string]interface{}
+	json.Unmarshal(bytes, &salary)
+
+	assert.Equal(t, 200, int(salary["code"].(float64)))
+	assert.Equal(t, "OK", salary["status"])
+	assert.Equal(t, save.Id, int(salary["data"].(map[string]interface{})["id"].(float64)))
+	assert.Equal(t, "CTO", salary["data"].(map[string]interface{})["role"])
 }
 
 func TestUpdateSalaryFailed(t *testing.T) {
