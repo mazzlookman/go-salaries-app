@@ -37,17 +37,17 @@ func TestCreateSalarySuccess(t *testing.T) {
 
 	router := setupRouter(db)
 
-	requestBody := strings.NewReader(`{"role":"UI/UX","company":"Bukalapak","expr":2,"salary":10000000}`)
+	payload := strings.NewReader(`{"role":"UI/UX","company":"Bukalapak","expr":2,"salary":10000000}`)
 
-	request := httptest.NewRequest("POST", "http://localhost:8080/api/salaries", requestBody)
+	request := httptest.NewRequest("POST", "http://localhost:8080/api/salaries", payload)
 	request.Header.Add("Content-Type", "application/json")
 	request.Header.Add("x-api-key", "rahasia")
 
-	response := httptest.NewRecorder()
+	writer := httptest.NewRecorder()
 
-	router.ServeHTTP(response, request)
+	router.ServeHTTP(writer, request)
 
-	result := response.Result()
+	result := writer.Result()
 	assert.Equal(t, 200, result.StatusCode)
 
 	bytes, _ := io.ReadAll(result.Body)
@@ -57,11 +57,33 @@ func TestCreateSalarySuccess(t *testing.T) {
 	assert.Equal(t, 200, int(salary["code"].(float64)))
 	assert.Equal(t, "OK", salary["status"])
 	assert.Equal(t, "UI/UX", salary["data"].(map[string]interface{})["role"])
-
 }
 
 func TestCreateSalaryFailed(t *testing.T) {
+	db := app.NewDBTest()
+	TruncateSalary(db)
 
+	router := setupRouter(db)
+
+	payload := strings.NewReader(`{"role":"","company":"","expr":null,"salary":null}`)
+
+	request := httptest.NewRequest("POST", "http://localhost:8080/api/salaries", payload)
+	request.Header.Add("Content-Type", "application/json")
+	request.Header.Add("x-api-key", "rahasia")
+
+	writer := httptest.NewRecorder()
+
+	router.ServeHTTP(writer, request)
+
+	result := writer.Result()
+	assert.Equal(t, 400, result.StatusCode)
+
+	bytes, _ := io.ReadAll(result.Body)
+	var salary map[string]interface{}
+	json.Unmarshal(bytes, &salary)
+
+	assert.Equal(t, 400, int(salary["code"].(float64)))
+	assert.Equal(t, "BAD REQUEST", salary["status"])
 }
 
 func TestUpdateSalarySuccess(t *testing.T) {

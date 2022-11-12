@@ -1,0 +1,5 @@
+{
+  "code": 400,
+  "status": "BAD REQUEST",
+  "data": "Key: 'SalaryCreateRequest.Role' Error:Field validation for 'Role' failed on the 'required' tag\nKey: 'SalaryCreateRequest.Salary' Error:Field validation for 'Salary' failed on the 'required' tag"
+}

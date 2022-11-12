@@ -3,6 +3,7 @@ package app
 import (
 	"github.com/julienschmidt/httprouter"
 	"go-salaries-app/controller"
+	"go-salaries-app/exception"
 )
 
 func NewRouter(salaryController controller.SalaryController) *httprouter.Router {
@@ -12,6 +13,7 @@ func NewRouter(salaryController controller.SalaryController) *httprouter.Router 
 	router.POST("/api/salaries", salaryController.Create)
 	router.PUT("/api/salaries/:salaryId", salaryController.Update)
 	router.DELETE("/api/salaries/:salaryId", salaryController.Delete)
+	router.PanicHandler = exception.ErrorHandler
 
 	return router
 }

@@ -7,12 +7,14 @@ x-api-key: rahasia
 POST localhost:8080/api/salaries
 Content-Type: application/json
 Accept: application/json
+x-api-key: rahasia
+
 
 {
   "role": "",
   "company": "Shopee",
-  "expr": 1,
-  "salary": 6000000
+  "expr":null,
+  "salary": null
 }
 
 ### Find By Id
