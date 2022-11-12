@@ -52,7 +52,6 @@ func TestCreateSalarySuccess(t *testing.T) {
 	router.ServeHTTP(writer, request)
 
 	result := writer.Result()
-	assert.Equal(t, 200, result.StatusCode)
 
 	bytes, _ := io.ReadAll(result.Body)
 	var salary map[string]interface{}
@@ -80,7 +79,6 @@ func TestCreateSalaryFailed(t *testing.T) {
 	router.ServeHTTP(writer, request)
 
 	result := writer.Result()
-	assert.Equal(t, 400, result.StatusCode)
 
 	bytes, _ := io.ReadAll(result.Body)
 	var salary map[string]interface{}
@@ -118,7 +116,6 @@ func TestUpdateSalarySuccess(t *testing.T) {
 
 	response := writer.Result()
 	bytes, _ := io.ReadAll(response.Body)
-	//assert.Equal(t, 200, response.StatusCode)
 
 	var salary map[string]interface{}
 	json.Unmarshal(bytes, &salary)
@@ -130,7 +127,41 @@ func TestUpdateSalarySuccess(t *testing.T) {
 }
 
 func TestUpdateSalaryFailed(t *testing.T) {
+	db := app.NewDBTest()
+	TruncateSalary(db)
+	router := setupRouter(db)
 
+	//create new salary
+	salaryRepository := repository.NewSalaryRepository()
+	tx, err := db.Begin()
+	save := salaryRepository.Save(context.Background(), tx, domain.Salaries{
+		Role:    "Technical Architect",
+		Company: "Blibli",
+		Expr:    10,
+		Salary:  50000000,
+	})
+	helper.PanicIfError(err)
+	defer helper.CommitOrRollback(tx)
+
+	//update salary that was created above
+	payload := strings.NewReader(`{"role":"","company":"","expr":null,"salary":null}`)
+	request := httptest.NewRequest("PUT", "http://localhost:8080/api/salaries/"+strconv.Itoa(save.Id), payload)
+	request.Header.Add("Content-Type", "application/json")
+	request.Header.Add("x-api-key", "rahasia")
+	writer := httptest.NewRecorder()
+
+	router.ServeHTTP(writer, request)
+
+	response := writer.Result()
+	bytes, _ := io.ReadAll(response.Body)
+
+	var salary map[string]interface{}
+	json.Unmarshal(bytes, &salary)
+
+	assert.Equal(t, 400, int(salary["code"].(float64)))
+	assert.Equal(t, "BAD REQUEST", salary["status"])
+	//assert.Equal(t, save.Id, int(salary["data"].(map[string]interface{})["id"].(float64)))
+	//assert.Equal(t, "CTO", salary["data"].(map[string]interface{})["role"])
 }
 
 func TestGetSalarySuccess(t *testing.T) {
