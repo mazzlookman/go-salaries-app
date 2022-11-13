@@ -165,11 +165,77 @@ func TestUpdateSalaryFailed(t *testing.T) {
 }
 
 func TestGetSalarySuccess(t *testing.T) {
+	db := app.NewDBTest()
+	TruncateSalary(db)
+	router := setupRouter(db)
 
+	tx, err := db.Begin()
+	helper.PanicIfError(err)
+
+	salaryRepository := repository.NewSalaryRepository()
+	save := salaryRepository.Save(context.Background(), tx, domain.Salaries{
+		Role:    "Software Engineer",
+		Company: "LinkAja",
+		Expr:    10,
+		Salary:  50000000,
+	})
+
+	helper.CommitOrRollback(tx)
+
+	request := httptest.NewRequest("GET", "http://localhost:8080/api/salaries/"+strconv.Itoa(save.Id), nil)
+	request.Header.Add("Accept", "application/json")
+	request.Header.Add("x-api-key", "rahasia")
+
+	writer := httptest.NewRecorder()
+
+	router.ServeHTTP(writer, request)
+
+	response := writer.Result()
+	bytes, _ := io.ReadAll(response.Body)
+
+	var salary map[string]interface{}
+	json.Unmarshal(bytes, &salary)
+
+	assert.Equal(t, 200, int(salary["code"].(float64)))
+	assert.Equal(t, "OK", salary["status"])
+	assert.Equal(t, save.Role, salary["data"].(map[string]interface{})["role"])
+	assert.Equal(t, save.Id, int(salary["data"].(map[string]interface{})["id"].(float64)))
 }
 
 func TestGetSalaryFailed(t *testing.T) {
+	db := app.NewDBTest()
+	TruncateSalary(db)
+	router := setupRouter(db)
 
+	tx, err := db.Begin()
+	helper.PanicIfError(err)
+
+	salaryRepository := repository.NewSalaryRepository()
+	salaryRepository.Save(context.Background(), tx, domain.Salaries{
+		Role:    "Software Engineer",
+		Company: "LinkAja",
+		Expr:    10,
+		Salary:  50000000,
+	})
+
+	helper.CommitOrRollback(tx)
+
+	request := httptest.NewRequest("GET", "http://localhost:8080/api/salaries/404", nil)
+	request.Header.Add("Accept", "application/json")
+	request.Header.Add("x-api-key", "rahasia")
+
+	writer := httptest.NewRecorder()
+
+	router.ServeHTTP(writer, request)
+
+	response := writer.Result()
+	bytes, _ := io.ReadAll(response.Body)
+
+	var salary map[string]interface{}
+	json.Unmarshal(bytes, &salary)
+
+	assert.Equal(t, 404, int(salary["code"].(float64)))
+	assert.Equal(t, "NOT FOUND", salary["status"])
 }
 
 func TestDeleteSalarySuccess(t *testing.T) {

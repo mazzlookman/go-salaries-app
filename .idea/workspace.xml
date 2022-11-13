@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4da4dcc-a5a5-4600-ac0f-6445f485c96a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/salary_controller_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/salary_controller_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +95,7 @@
       <recent name="D:\CodingTraining\Development\GoLang\go-salaries-app\model\domain" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestUpdateSalarySuccess in go-salaries-app/test">
+  <component name="RunManager" selected="Go Test.TestGetSalaryFailed in go-salaries-app/test">
     <configuration name="TestCreateSalaryFailed in go-salaries-app/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="go-salaries-app" />
       <working_directory value="$PROJECT_DIR$/test" />
@@ -107,7 +108,7 @@
       <pattern value="^\QTestCreateSalaryFailed\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestCreateSalarySuccess in go-salaries-app/test (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestGetSalaryFailed in go-salaries-app/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="go-salaries-app" />
       <working_directory value="$PROJECT_DIR$/test" />
       <root_directory value="$PROJECT_DIR$" />
@@ -116,7 +117,19 @@
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestCreateSalarySuccess\E$" />
+      <pattern value="^\QTestGetSalaryFailed\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestGetSalarySuccess in go-salaries-app/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-salaries-app" />
+      <working_directory value="$PROJECT_DIR$/test" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="go-salaries-app/test" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestGetSalarySuccess\E$" />
       <method v="2" />
     </configuration>
     <configuration name="TestUpdateSalaryFailed in go-salaries-app/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -143,9 +156,6 @@
       <pattern value="^\QTestUpdateSalarySuccess\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="test | Create" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test.http" index="2" requestIdentifier="Create" runType="Run single request">
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="SwaggerCodegen">
       <option name="activeConfigurationType" value="FILE" />
       <option name="configurationPath" value="" />
@@ -164,11 +174,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestUpdateSalarySuccess in go-salaries-app/test" />
+        <item itemvalue="Go Test.TestGetSalaryFailed in go-salaries-app/test" />
+        <item itemvalue="Go Test.TestGetSalarySuccess in go-salaries-app/test" />
         <item itemvalue="Go Test.TestUpdateSalaryFailed in go-salaries-app/test" />
+        <item itemvalue="Go Test.TestUpdateSalarySuccess in go-salaries-app/test" />
         <item itemvalue="Go Test.TestCreateSalaryFailed in go-salaries-app/test" />
-        <item itemvalue="Go Test.TestCreateSalarySuccess in go-salaries-app/test (1)" />
-        <item itemvalue="HTTP Request.test | Create" />
       </list>
     </recent_temporary>
   </component>
