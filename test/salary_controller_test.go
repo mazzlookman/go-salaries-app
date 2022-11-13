@@ -362,5 +362,24 @@ func TestListSalariesSuccess(t *testing.T) {
 }
 
 func TestUnauthorized(t *testing.T) {
+	db := app.NewDBTest()
+	TruncateSalary(db)
+	router := setupRouter(db)
 
+	request := httptest.NewRequest("GET", "http://localhost:8080/api/salaries/404", nil)
+	request.Header.Add("Accept", "application/json")
+	request.Header.Add("x-api-key", "ngawur")
+
+	writer := httptest.NewRecorder()
+
+	router.ServeHTTP(writer, request)
+
+	response := writer.Result()
+	bytes, _ := io.ReadAll(response.Body)
+
+	var salary map[string]interface{}
+	json.Unmarshal(bytes, &salary)
+
+	assert.Equal(t, 401, int(salary["code"].(float64)))
+	assert.Equal(t, "UNAUTHORIZED", salary["status"])
 }
