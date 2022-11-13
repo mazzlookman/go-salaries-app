@@ -37,11 +37,7 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1667748010" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="master" />
-                    <option name="lastUsedInstant" value="1667748009" />
+                    <option name="lastUsedInstant" value="1668334855" />
                   </RecentBranch>
                 </list>
               </option>
@@ -95,7 +91,19 @@
       <recent name="D:\CodingTraining\Development\GoLang\go-salaries-app\model\domain" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestDeleteSalarySuccess in go-salaries-app/test">
+  <component name="RunManager" selected="Go Test.TestDeleteSalarySuccess in go-salaries-app/test (1)">
+    <configuration name="TestDeleteSalarySuccess in go-salaries-app/test (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-salaries-app" />
+      <working_directory value="$PROJECT_DIR$/test" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="go-salaries-app/test" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestDeleteSalarySuccess\E$" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestDeleteSalarySuccess in go-salaries-app/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="go-salaries-app" />
       <working_directory value="$PROJECT_DIR$/test" />
@@ -144,18 +152,6 @@
       <pattern value="^\QTestUpdateSalaryFailed\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestUpdateSalarySuccess in go-salaries-app/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="go-salaries-app" />
-      <working_directory value="$PROJECT_DIR$/test" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="go-salaries-app/test" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTestUpdateSalarySuccess\E$" />
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="SwaggerCodegen">
       <option name="activeConfigurationType" value="FILE" />
       <option name="configurationPath" value="" />
@@ -174,11 +170,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestDeleteSalarySuccess in go-salaries-app/test (1)" />
         <item itemvalue="Go Test.TestDeleteSalarySuccess in go-salaries-app/test" />
         <item itemvalue="Go Test.TestGetSalaryFailed in go-salaries-app/test" />
         <item itemvalue="Go Test.TestGetSalarySuccess in go-salaries-app/test" />
         <item itemvalue="Go Test.TestUpdateSalaryFailed in go-salaries-app/test" />
-        <item itemvalue="Go Test.TestUpdateSalarySuccess in go-salaries-app/test" />
       </list>
     </recent_temporary>
   </component>
