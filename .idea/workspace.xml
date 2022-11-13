@@ -95,8 +95,8 @@
       <recent name="D:\CodingTraining\Development\GoLang\go-salaries-app\model\domain" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestGetSalaryFailed in go-salaries-app/test">
-    <configuration name="TestCreateSalaryFailed in go-salaries-app/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.TestDeleteSalarySuccess in go-salaries-app/test">
+    <configuration name="TestDeleteSalarySuccess in go-salaries-app/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="go-salaries-app" />
       <working_directory value="$PROJECT_DIR$/test" />
       <root_directory value="$PROJECT_DIR$" />
@@ -105,7 +105,7 @@
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestCreateSalaryFailed\E$" />
+      <pattern value="^\QTestDeleteSalarySuccess\E$" />
       <method v="2" />
     </configuration>
     <configuration name="TestGetSalaryFailed in go-salaries-app/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -174,11 +174,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestDeleteSalarySuccess in go-salaries-app/test" />
         <item itemvalue="Go Test.TestGetSalaryFailed in go-salaries-app/test" />
         <item itemvalue="Go Test.TestGetSalarySuccess in go-salaries-app/test" />
         <item itemvalue="Go Test.TestUpdateSalaryFailed in go-salaries-app/test" />
         <item itemvalue="Go Test.TestUpdateSalarySuccess in go-salaries-app/test" />
-        <item itemvalue="Go Test.TestCreateSalaryFailed in go-salaries-app/test" />
       </list>
     </recent_temporary>
   </component>
