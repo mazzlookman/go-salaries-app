@@ -312,6 +312,52 @@ func TestDeleteSalaryFailed(t *testing.T) {
 }
 
 func TestListSalariesSuccess(t *testing.T) {
+	db := app.NewDBTest()
+	TruncateSalary(db)
+	router := setupRouter(db)
+
+	tx, err := db.Begin()
+	helper.PanicIfError(err)
+
+	salaryRepository := repository.NewSalaryRepository()
+	save1 := salaryRepository.Save(context.Background(), tx, domain.Salaries{
+		Role:    "Software Engineer",
+		Company: "LinkAja",
+		Expr:    10,
+		Salary:  50000000,
+	})
+
+	save2 := salaryRepository.Save(context.Background(), tx, domain.Salaries{
+		Role:    "Data Analyst",
+		Company: "LinkAja",
+		Expr:    5,
+		Salary:  25000000,
+	})
+
+	helper.CommitOrRollback(tx)
+
+	request := httptest.NewRequest("GET", "http://localhost:8080/api/salaries", nil)
+	request.Header.Add("Accept", "application/json")
+	request.Header.Add("x-api-key", "rahasia")
+
+	writer := httptest.NewRecorder()
+
+	router.ServeHTTP(writer, request)
+
+	response := writer.Result()
+	bytes, _ := io.ReadAll(response.Body)
+
+	var salaries map[string]interface{}
+	json.Unmarshal(bytes, &salaries)
+
+	var getAll = salaries["data"].([]interface{})
+	salary1 := getAll[0].(map[string]interface{})
+	salary2 := getAll[1].(map[string]interface{})
+
+	assert.Equal(t, 200, int(salaries["code"].(float64)))
+	assert.Equal(t, "OK", salaries["status"])
+	assert.Equal(t, save1.Role, salary1["role"])
+	assert.Equal(t, save2.Role, salary2["role"])
 
 }
 
